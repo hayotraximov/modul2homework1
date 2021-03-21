@@ -47,14 +47,12 @@ public class WorkerService {
 
 
     public List<Worker> getAll() {
-        List<Worker> all = workerRepository.findAll();
-        return all;
+        return workerRepository.findAll();
     }
 
     public Worker getOneById(Integer id) {
         Optional<Worker> optionalWorker = workerRepository.findById(id);
-        if (!optionalWorker.isPresent()) return null;
-        return optionalWorker.get();
+        return optionalWorker.orElse(null);
     }
 
     public ResponseApi delete(Integer id) {

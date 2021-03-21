@@ -39,14 +39,12 @@ public class CompanyService {
     }
 
     public List<Company> getAll() {
-        List<Company> all = companyRepository.findAll();
-        return all;
+        return companyRepository.findAll();
     }
 
     public Company getOneById(Integer id) {
         Optional<Company> optionalCompany = companyRepository.findById(id);
-        if (!optionalCompany.isPresent()) return null;
-        return optionalCompany.get();
+        return optionalCompany.orElse(null);
     }
 
     public ResponseApi delete(Integer id) {

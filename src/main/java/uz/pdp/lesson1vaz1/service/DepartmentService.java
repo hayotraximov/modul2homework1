@@ -39,14 +39,12 @@ public class DepartmentService {
     }
 
     public List<Department> getAll() {
-        List<Department> all = departmentRepository.findAll();
-        return all;
+        return departmentRepository.findAll();
     }
 
     public Department getOneById(Integer id) {
         Optional<Department> departmentOptional = departmentRepository.findById(id);
-        if (!departmentOptional.isPresent()) return null;
-        return departmentOptional.get();
+        return departmentOptional.orElse(null);
     }
 
     public ResponseApi delete(Integer id) {

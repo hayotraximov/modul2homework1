@@ -30,15 +30,13 @@ public class AddressService {
     }
 
     public List<Address> getAll() {
-        List<Address> all = addressRepository.findAll();
-        return all;
+        return addressRepository.findAll();
     }
 
     public Address getOneById(Integer id) {
 
         Optional<Address> addressOptional = addressRepository.findById(id);
-        if (!addressOptional.isPresent()) return null;
-        return addressOptional.get();
+        return addressOptional.orElse(null);
 
     }
 
