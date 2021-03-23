@@ -65,7 +65,7 @@ public class CompanyService {
         Address address = new Address();
         address.setHomeNumber(companyDto.getHomeNumber());
         address.setStreet(companyDto.getStreet());
-
+        addressRepository.save(address);
         Company company = optionalCompany.get();
         company.setCorpName(company.getCorpName());
         company.setAddress(address);
