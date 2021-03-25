@@ -75,10 +75,10 @@ public class WorkerService {
         Address address = new Address();
         address.setHomeNumber(workerDto.getHomeNumber());
         address.setStreet(workerDto.getStreet());
-
+        Address save = addressRepository.save(address);
         Worker worker = optionalWorker.get();
         worker.setDepartment(optionalDepartment.get());
-        worker.setAddress(address);
+        worker.setAddress(save);
         worker.setFullName(workerDto.getFullName());
         worker.setPhoneNumber(workerDto.getPhoneNumber());
         workerRepository.save(worker);
