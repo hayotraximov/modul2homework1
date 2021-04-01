@@ -62,7 +62,7 @@ public class CompanyService {
         Optional<Company> optionalCompany = companyRepository.findById(id);
         if (!optionalCompany.isPresent()) return new ResponseApi("Company not found", false);
 
-        Address address = new Address();
+        Address address = addressRepository.findById(optionalCompany.get().getAddress());
         address.setHomeNumber(companyDto.getHomeNumber());
         address.setStreet(companyDto.getStreet());
         addressRepository.save(address);
