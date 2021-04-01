@@ -72,7 +72,7 @@ public class WorkerService {
         if (!optionalDepartment.isPresent() || !optionalWorker.isPresent() || numberAndIdNot) {
             return new ResponseApi("Error", false);
         }
-        Address address = new Address();
+        Address address = addressRepository.findById(optionalWorker.get().getAddress());
         address.setHomeNumber(workerDto.getHomeNumber());
         address.setStreet(workerDto.getStreet());
         Address save = addressRepository.save(address);
